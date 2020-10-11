@@ -1,0 +1,99 @@
+{
+	"menuTitles": [
+        {
+			"title": "Components",
+			"icon": "componentIcon",
+			"link": "components"
+        },
+        {
+			"title": "Image Hooks",
+			"icon": "imageIcon",
+			"link": "images"
+        },
+        {
+			"title": "Perfomance Hooks",
+			"icon": "gaugeIcon",
+			"link": "performance"
+        },
+        {
+			"title": "User Experience Hooks",
+			"icon": "userIcon",
+			"link": "user"
+		}
+    ],
+    "subMenus": [
+        {
+            "activeMenu": "components",
+            "backIcon": "arrowIcon",
+            "menuTitle": "Components",
+            "menuLinks": [
+                {
+                    "title": "Accordion",
+                    "icon": "accordionIcon",
+                    "link": "/accordion"
+                }
+            ]
+        },
+        {
+            "activeMenu": "images",
+            "backIcon": "arrowIcon",
+            "menuTitle": "Image Hooks",
+            "menuLinks": [
+                {
+                    "title": "useImageLoader",
+                    "icon": "loadingIcon",
+                    "link": "/"
+                },
+                {
+                    "title": "useImageError",
+                    "icon": "errorIcon",
+                    "link": "/use-image-error"
+                }
+            ]
+        },
+        {
+            "activeMenu": "performance",
+            "backIcon": "arrowIcon",
+            "menuTitle": "Performance Hooks",
+            "menuLinks": [
+                {
+                    "title": "useSafeState",
+                    "icon": "safeStateIcon",
+                    "link": "/use-safe-state"
+                },
+                {
+                    "title": "useResize",
+                    "icon": "sizeIcon",
+                    "link": "/use-resize"
+                }
+            ]
+        },
+        {
+            "activeMenu": "user",
+            "backIcon": "arrowIcon",
+            "menuTitle": "User Experience Hooks",
+            "menuLinks": [
+                {
+                    "title": "useKeyboardShortcut",
+                    "icon": "shortcutIcon",
+                    "link": "/use-shortcut-key"
+                },
+                {
+                    "title": "useListAnimation",
+                    "icon": "listIcon",
+                    "link": "/use-list-animation"
+                },
+                {
+                    "title": "useLocalStorage",
+                    "icon": "storageIcon",
+                    "link": "/use-local-storage"
+                },
+                {
+                    "title": "useSecretCode",
+                    "icon": "konamiIcon",
+                    "link": "/use-secret-code"
+                }
+            ]
+        }
+    ]
+}
