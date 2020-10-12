@@ -4,20 +4,20 @@ import './Menu.scss';
 import MenuData from './Data/menu-data.json';
 
 interface MenuProps {
-  navIcon: string;
+  navIcon: React.ReactNode;
   title: string;
 }
 
 interface NavbarProps {
   children: any;
   title?: string;
-  icon?: string;
+  icon?: React.ReactNode;
 }
 
-function Menu:<MenuProps> = ({ navIcon, title }) => {
-  const [open, setOpen] = useState(false);
+function Menu({ navIcon, title }: MenuProps){
+  const [open, setOpen] = useState<boolean>(false);
   
-  function Navbar({ children, title }) {
+  function Navbar({ children, title }: NavbarProps) {
     return (
       <nav className="navbar">
         <a href="/" className="navbar-link">
@@ -30,28 +30,30 @@ function Menu:<MenuProps> = ({ navIcon, title }) => {
     );
   }
   
-  function NavItem({ icon, children }) {  
+  function NavItem({ icon, children }: NavbarProps) {  
     return (
       <li className="nav-item">
-        <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
+        <button className="icon-button" onClick={() => setOpen(!open)}>
           {icon}
-        </a>
+        </button>
         {open && children}
       </li>
     );
   }
   
   function DropdownMenu() {
-    const [activeMenu, setActiveMenu] = useState('main');
-    const [menuHeight, setMenuHeight] = useState(null);
-    const dropdownRef = useRef(null);
+    const [activeMenu, setActiveMenu] = useState<string>('main');
+    const [menuHeight, setMenuHeight] = useState<any>(null);
+    const dropdownRef = useRef<any>(null);
     useOutsideAlerter(dropdownRef, setOpen);
   
     useEffect(() => {
-      setMenuHeight(dropdownRef.current?.firstChild.offsetHeight)
+      if(dropdownRef.current !== null) {
+        setMenuHeight(dropdownRef.current.firstChild.offsetHeight)
+      }
     }, [])
   
-    function calcHeight(el) {
+    function calcHeight(el: any) {
       const height = el.offsetHeight;
       setMenuHeight(height);
     }

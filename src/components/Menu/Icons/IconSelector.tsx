@@ -15,8 +15,13 @@ import { ReactComponent as SizeIcon } from './sizeIcon.svg';
 import { ReactComponent as StorageIcon } from './storageIcon.svg';
 import { ReactComponent as UserIcon } from './userIcon.svg';
 
+type iconOptions = {
+  default: () => null;
+  [key: string]: () => React.ReactNode;
+}
+
 const getIcon = (icon: string) => {
-  const iconSelection = {
+  const iconSelection: iconOptions = {
       accordionIcon: () => <AccordionIcon/>,
       arrowIcon: () => <ArrowIcon/>,
       componentIcon: () => <ComponentIcon/>,
