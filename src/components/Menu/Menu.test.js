@@ -98,8 +98,8 @@ describe('Menu', () => {
         closedMenu.simulate('click');
         const menuItem = menuComponent.find('.menu-item').first();
         menuItem.simulate('click');
-        const secondaryMenu = menuComponent.find('.sub-menu');
-        expect(secondaryMenu).toHaveLength(1);
+        const secondaryMenu = menuComponent.find('.menu-secondary');
+        expect(secondaryMenu).not.toBe(null);
     })
 
     it('renders a minimum of one sub menu item', () => {
@@ -107,7 +107,7 @@ describe('Menu', () => {
         closedMenu.simulate('click');
         const menuItem = menuComponent.find('.menu-item').first();
         menuItem.simulate('click');
-        const subMenuItem = menuComponent.find('.sub-menu-item');
+        const subMenuItem = menuComponent.find('.menu-item');
         expect(subMenuItem.length).toBeGreaterThan(0);
     })
 });
