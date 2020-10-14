@@ -2,11 +2,6 @@ import React, { useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { IconSelector } from './Icons/IconSelector';
 
-interface outsideAlertProps {
-    ref: any;
-    openView: (value: boolean) => void;
-}
-
 interface dropDownProps {
     children: any;
     goToMenu?: string;
@@ -34,7 +29,10 @@ type menuTitles = {
 }
 
 type subMenus = {
-    activeMenu: any; backIcon: string; menuTitle: React.ReactNode; menuLinks: any[];
+    activeMenu: any; 
+    backIcon: string; 
+    menuTitle: React.ReactNode; 
+    menuLinks: menuLinks[];
 }
 
 type menuLinks = {
@@ -43,7 +41,7 @@ type menuLinks = {
     link: string;
 }
 
-function useOutsideAlerter({ref, openView}: outsideAlertProps) {
+function useOutsideAlerter(ref: any, openView: (view: boolean) => void) {
     useEffect(() => {
         function handleClickOutside(event: Event) {
             if (ref?.current && !ref.current.contains(event.target)) {
@@ -55,6 +53,7 @@ function useOutsideAlerter({ref, openView}: outsideAlertProps) {
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ref]);
 }
 

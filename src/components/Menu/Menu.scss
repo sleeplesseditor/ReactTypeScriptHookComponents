@@ -60,6 +60,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
   
 .icon-button {
@@ -67,6 +68,7 @@ a {
     width: var(--button-size);
     height: var(--button-size);
     background-color: var(--bg);
+    border: none;
     border-radius: 50%;
     padding: 5px;
     margin: 2px;
