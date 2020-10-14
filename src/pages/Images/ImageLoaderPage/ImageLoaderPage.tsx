@@ -10,7 +10,7 @@ const srcs = [
 ];
 
 const useImageGallery = () => {
-    const [selectedSrc, setSrc] = useState(srcs[0]);
+    const [selectedSrc, setSrc] = useState(srcs[0] as string);
     return {
       buttons: srcs.map((src, i) => (
         <button

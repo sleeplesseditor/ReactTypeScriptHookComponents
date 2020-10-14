@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
-const useImage = ({ src }) => {
-    const [loaded, setLoaded] = useState(false);
-    const [error, setError] = useState(false);
+const useImage = ({ src }: string | any) => {
+    const [loaded, setLoaded] = useState<boolean>(false);
+    const [error, setError] = useState<boolean>(false);
 
     useEffect(() => {
         const img = new Image();
