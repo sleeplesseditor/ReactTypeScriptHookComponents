@@ -1,8 +1,15 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Menu from './Menu';
-import { MenuStructure } from './MenuHelpers';
+import { Menu } from './Menu';
+import { NewMenu as MenuContent } from './MenuHelpers';
 import { ReactComponent as CaretIcon } from './Icons/caret.svg';
+
+interface NavbarProps {
+    children: any;
+    title?: string;
+    icon?: React.ReactNode;
+    navIcon: React.ReactNode;
+  }
 
 const dummyMenuData = {
 	menuTitles: [
@@ -50,22 +57,26 @@ const dummyMenuData = {
     ]
 }
 
-const setState = jest.fn();
-const useStateMock = (initState) => [initState, setState];
+const mockSetState = jest.fn();
+jest.mock('react', () => ({
+  useState: (initial: any) => [initial, mockSetState]
+}));
 
 let props = {
     activeMenu: 'menu-1',
+    activeMenuProp: 'menu-1',
+    calcHeight: 'mockHeight',
     menuData: dummyMenuData,
-    setActiveMenu: setState
+    setActiveMenu: mockSetState
 }
 
-let menuComponent;
+let menuComponent: any;
 
 beforeEach(() => {
-    jest.spyOn(React, 'useState').mockImplementation(useStateMock);
+    // jest.spyOn(React, 'useState').mockImplementation(useStateMock);
     menuComponent = mount(
         <Menu title="Demo" navIcon={<CaretIcon />}>
-            <MenuStructure {...props} />
+            <MenuContent {...props} />
         </Menu>
     )
 })

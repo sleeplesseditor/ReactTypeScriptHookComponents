@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LazyLoader from './components/LazyLoader/LazyLoader';
-import Menu from './components/Menu/Menu';
+import { Menu } from './components/Menu/Menu';
 import { ReactComponent as CaretIcon } from './components/Menu/Icons/caret.svg';
 import './App.scss';
 

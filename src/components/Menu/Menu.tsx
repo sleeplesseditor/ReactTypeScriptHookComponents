@@ -3,18 +3,13 @@ import { NewMenu, useOutsideAlerter } from './MenuHelpers';
 import './Menu.scss';
 import MenuData from './Data/menu-data.json';
 
-interface MenuProps {
-  navIcon: React.ReactNode;
-  title: string;
-}
-
 interface NavbarProps {
-  children: any;
+  children?: any;
   title?: string;
   icon?: React.ReactNode;
 }
 
-function Menu({ navIcon, title }: MenuProps){
+function Menu(navIcon: any, title: string){
   const [open, setOpen] = useState<boolean>(false);
   
   function Navbar({ children, title }: NavbarProps) {
@@ -31,6 +26,7 @@ function Menu({ navIcon, title }: MenuProps){
   }
   
   function NavItem({ icon, children }: NavbarProps) {  
+    console.log('PROPS', icon, children)
     return (
       <li className="nav-item">
         <button className="icon-button" onClick={() => setOpen(!open)}>
@@ -80,4 +76,6 @@ function Menu({ navIcon, title }: MenuProps){
   );
 }
   
-export default Menu;
+export {
+  Menu
+};
