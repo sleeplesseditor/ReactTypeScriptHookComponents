@@ -2,10 +2,51 @@ import React, { useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { IconSelector } from './Icons/IconSelector';
 
-function useOutsideAlerter(ref, openView) {
+interface outsideAlertProps {
+    ref: any;
+    openView: (value: boolean) => void;
+}
+
+interface dropDownProps {
+    children: any;
+    goToMenu?: string;
+    leftIcon: any;
+    rightIcon?: any;
+    setActiveMenu?: (activeMenu: string) => void;
+    subMenu?: string;
+}
+
+interface newMenuProps {
+    activeMenu: any;
+    activeMenuProp: any;
+    calcHeight: any;
+    setActiveMenu?: (activeMenu: string) => void;
+    menuData: {
+        menuTitles: menuTitles[];
+        subMenus: subMenus[];
+    }
+}
+
+type menuTitles = {
+    icon: string; 
+    link: string | undefined; 
+    title: any;
+}
+
+type subMenus = {
+    activeMenu: any; backIcon: string; menuTitle: React.ReactNode; menuLinks: any[];
+}
+
+type menuLinks = {
+    title: string;
+    icon: string;
+    link: string;
+}
+
+function useOutsideAlerter({ref, openView}: outsideAlertProps) {
     useEffect(() => {
-        function handleClickOutside(event) {
-            if (ref.current && !ref.current.contains(event.target)) {
+        function handleClickOutside(event: Event) {
+            if (ref?.current && !ref.current.contains(event.target)) {
                 openView(false);
             }
         }
@@ -17,13 +58,17 @@ function useOutsideAlerter(ref, openView) {
     }, [ref]);
 }
 
-function DropdownItem({ children, goToMenu, leftIcon, rightIcon, setActiveMenu, subMenu }) {
+function DropdownItem({ children, goToMenu, leftIcon, rightIcon, setActiveMenu, subMenu }: dropDownProps) {
     return (
-      <a href={subMenu ? subMenu : '#'} className="menu-item" onClick={() => goToMenu && setActiveMenu(goToMenu)}>
-        <span className="icon-button">{leftIcon}</span>
-        {children}
-        <span className="icon-right">{rightIcon}</span>
-      </a>
+        <a 
+            href={subMenu ? subMenu : '#'} 
+            className="menu-item" 
+            onClick={() => goToMenu && setActiveMenu && setActiveMenu(goToMenu)}
+        >
+            <span className="icon-button">{leftIcon}</span>
+            {children}
+            <span className="icon-right">{rightIcon}</span>
+        </a>
     );
 }
 
@@ -33,7 +78,7 @@ const NewMenu = ({
     calcHeight,
     menuData: { menuTitles, subMenus },
     setActiveMenu
-}) => {
+}: newMenuProps) => {
     if (menuTitles) {
         return (
             <>
@@ -45,7 +90,7 @@ const NewMenu = ({
                 onEnter={calcHeight}
             >
                 <div className="menu">
-                    {menuTitles.map(link => (
+                    {menuTitles.map((link: menuTitles) => (
                         <DropdownItem 
                             leftIcon={IconSelector(link.icon)} 
                             setActiveMenu={setActiveMenu} 
@@ -56,7 +101,7 @@ const NewMenu = ({
                     ))}
                 </div>
             </CSSTransition>
-            {subMenus.map(submenu => (
+            {subMenus.map((submenu: subMenus) => (
                 <CSSTransition
                 in={activeMenu === `${submenu.activeMenu}`}
                 timeout={500}
