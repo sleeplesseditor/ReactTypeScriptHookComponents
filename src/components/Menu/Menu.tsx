@@ -5,11 +5,12 @@ import MenuData from './Data/menu-data.json';
 
 interface NavbarProps {
   children?: any;
-  title?: string;
-  icon?: React.ReactNode;
+  title?: any;
+  icon?: any;
+  navIcon?: any;
 }
 
-function Menu(navIcon: any, title: string){
+function Menu({navIcon, title}: NavbarProps){
   const [open, setOpen] = useState<boolean>(false);
   
   function Navbar({ children, title }: NavbarProps) {
@@ -25,11 +26,10 @@ function Menu(navIcon: any, title: string){
     );
   }
   
-  function NavItem({ icon, children }: NavbarProps) {  
-    console.log('PROPS', icon, children)
+  function NavItem({children, icon}: NavbarProps) {  
     return (
       <li className="nav-item">
-        <button className="icon-button" onClick={() => setOpen(!open)}>
+        <button className="menu-icon-button" onClick={() => setOpen(!open)}>
           {icon}
         </button>
         {open && children}

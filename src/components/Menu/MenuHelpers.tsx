@@ -5,7 +5,7 @@ import { IconSelector } from './Icons/IconSelector';
 interface dropDownProps {
     children: any;
     goToMenu?: string;
-    leftIcon: any;
+    leftIcon?: any;
     rightIcon?: any;
     setActiveMenu?: (activeMenu: string) => void;
     subMenu?: string;
@@ -64,9 +64,9 @@ function DropdownItem({ children, goToMenu, leftIcon, rightIcon, setActiveMenu, 
             className="menu-item" 
             onClick={() => goToMenu && setActiveMenu && setActiveMenu(goToMenu)}
         >
-            <span className="icon-button">{leftIcon}</span>
+            <span className="menu-icon-button">{leftIcon}</span>
             {children}
-            <span className="icon-right">{rightIcon}</span>
+            <span className="menu-icon-right">{rightIcon}</span>
         </a>
     );
 }

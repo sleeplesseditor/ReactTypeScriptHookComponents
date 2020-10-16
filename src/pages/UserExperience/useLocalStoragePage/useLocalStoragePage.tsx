@@ -6,7 +6,7 @@ import './useLocationStoragePage.scss';
 const UseLocalStoragePage = () => {
     const [name, setName] = useLocalStorage("name", "");
     
-    const onChangeListener = (event) => {
+    const onChangeListener = (event: any) => {
         setName(event.target.value);
     };
 

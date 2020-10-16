@@ -10,11 +10,11 @@ const srcs = [
 ];
 
 const useImageGallery = () => {
-    const [selectedSrc, setSrc] = useState(srcs[0] as string);
+    const [selectedSrc, setSrc] = useState(srcs[0]);
     return {
       buttons: srcs.map((src, i) => (
         <button
-          className={`${{ active: src === selectedSrc }}`}
+          className={`${{ active: src === selectedSrc }} button`}
           onClick={() => setSrc(src)}
           key={src}
         >

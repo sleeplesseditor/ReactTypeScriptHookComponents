@@ -14,7 +14,7 @@ const useSecretCodePage = () => {
     const konamiCode = useKonamiCode();
 
     const playAudio = () => {
-        const audioEl = document.getElementsByClassName("audio-element")[0]
+        const audioEl = document.getElementsByClassName("audio-element")[0] as any
         audioEl.play()
     }
 
