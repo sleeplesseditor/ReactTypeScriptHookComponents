@@ -1,18 +1,24 @@
 import { useState, useEffect } from 'react';
 
-function useSingleKeyShortcut(targetKey) {
+interface multiKeyProps {
+  keys?: never[]; 
+  keysPressed?: never[]; 
+  value?: never[];
+}
+
+function useSingleKeyShortcut(targetKey: string) {
     // State for keeping track of whether key is pressed
-    const [keyPressed, setKeyPressed] = useState(false);
+    const [keyPressed, setKeyPressed] = useState<boolean>(false);
   
     // If pressed key is our target key then set to true
-    function downHandler({ key }) {
+    function downHandler({ key }: { key: string}) {
       if (key === targetKey) {
         setKeyPressed(true);
       }
     }
   
     // If released key is our target key then set to false
-    const upHandler = ({ key }) => {
+    const upHandler = ({ key }: { key: string}) => {
       if (key === targetKey) {
         setKeyPressed(false);
       }
@@ -33,13 +39,13 @@ function useSingleKeyShortcut(targetKey) {
 }
 
 function useMultiKeyShortcut() {
-    const [keysPressed, setKeyPressed] = useState(new Set([]));
+    const [keysPressed, setKeyPressed] = useState<any>(new Set([]));
   
-    function downHandler({ key }) {
+    function downHandler({ key }: { key: any}) {
       setKeyPressed(keysPressed.add(key));
     }
   
-    const upHandler = ({ key }) => {
+    const upHandler = ({ key }: { key: string}) => {
       keysPressed.delete(key);
       setKeyPressed(keysPressed);
     };
@@ -64,7 +70,7 @@ function areKeysPressed(keys = [], keysPressed = []) {
   return required.size === 0;
 }
 
-const MultiKeysPressed = ({ keys, keysPressed, value }) => {
+const MultiKeysPressed = ({ keys, keysPressed, value }: multiKeyProps) => {
   const arePressed = areKeysPressed(keys, keysPressed);
 
   if (arePressed) {
@@ -74,10 +80,10 @@ const MultiKeysPressed = ({ keys, keysPressed, value }) => {
 };
 
 const useInputEvent = () => {
-	const [key, setKey] = useState(null);
+	const [key, setKey] = useState<string | null>(null);
 
 	useEffect(() => {
-		const keyDownHandler = ({ code }) => setKey(code);
+		const keyDownHandler = ({ code }: { code: string}) => setKey(code);
 		const keyUpHandler = () => setKey(null);
 
 		global.addEventListener("keydown", keyDownHandler);
@@ -93,6 +99,7 @@ const useInputEvent = () => {
 };
 
 export {
+    MultiKeysPressed,
     useInputEvent,
     useSingleKeyShortcut,
     useMultiKeyShortcut

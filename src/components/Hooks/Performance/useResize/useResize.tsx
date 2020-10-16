@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const useResize = () => {
-    const [size, setSize] = useState([0, 0]);
+    const [size, setSize] = useState<Array<number>>([0, 0]);
     
     useEffect(() => {
         const getSize = () => setSize([window.innerWidth, window.innerHeight]);

@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 
 // Used for preventing unmounted component errors
 
-const useSafeState = (initialValue) => {
-    const isMountedRef = useRef(true);
-    const [currentValue, setCurrentValue] = useState(initialValue);
+const useSafeState = (initialValue: any) => {
+    const isMountedRef = useRef<boolean>(true);
+    const [currentValue, setCurrentValue] = useState<any>(initialValue);
 
     useEffect(() => {
         return () => {
@@ -12,7 +12,7 @@ const useSafeState = (initialValue) => {
         }
     }, [isMountedRef]);
 
-    const setSafeState = (value) => {
+    const setSafeState = (value: any) => {
         if (isMountedRef && isMountedRef.current) {
             setCurrentValue(value);
         }

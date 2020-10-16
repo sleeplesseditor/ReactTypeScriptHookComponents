@@ -1,7 +1,7 @@
 import React from "react";
 
-const calculateBoundingBoxes = children => {
-    const boundingBoxes = {};
+const calculateBoundingBoxes = (children: any) => {
+    const boundingBoxes: {[key: string]: any[]} = {};
 
     React.Children.forEach(children, child => {
         const domNode = child.ref.current;

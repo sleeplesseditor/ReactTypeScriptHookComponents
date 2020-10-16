@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useInputEvent } from '../useKeyboardShortcut/useKeyboardShortcuts';
 
-export const useSecretCode = (secretCode) => {
-	const [count, setCount] = useState(0);
-	const [success, setSuccess] = useState(false);
+export const useSecretCode = (secretCode: Array<string>) => {
+	const [count, setCount] = useState<number>(0);
+	const [success, setSuccess] = useState<boolean>(false);
 	const key = useInputEvent();
 
 	useEffect(() => {

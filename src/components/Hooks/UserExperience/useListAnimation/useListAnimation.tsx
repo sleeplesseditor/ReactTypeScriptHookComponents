@@ -2,9 +2,14 @@ import React, { useState, useLayoutEffect, useEffect } from "react";
 import usePrevious from "../../usePrevious";
 import calculateBoundingBoxes from "../../Helpers/boundingBox";
 
-const useListAnimation = ({ children, vertical }) => {
-    const [boundingBox, setBoundingBox] = useState({});
-    const [prevBoundingBox, setPrevBoundingBox] = useState({});
+type animationProps = {
+  children: Element;
+  vertical: any;
+}
+
+const useListAnimation = ({ children, vertical }: animationProps) => {
+    const [boundingBox, setBoundingBox] = useState<any>({});
+    const [prevBoundingBox, setPrevBoundingBox] = useState<any>({});
     const prevChildren = usePrevious(children);
   
     useLayoutEffect(() => {
@@ -35,8 +40,7 @@ const useListAnimation = ({ children, vertical }) => {
               domNode.style.transition = "transform 0s";
   
               requestAnimationFrame(() => {
-                // After the previous frame, remove
-                // the transistion to play the animation
+                // After the previous frame, remove the transistion to play the animation
                 domNode.style.transform = "";
                 domNode.style.transition = "transform 500ms";
               });

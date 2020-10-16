@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
 const useImageError = () => {
-    const [element, setElement] = useState(null); 
-    const [error, setError] = useState(false);
+    const [element, setElement] = useState<any>(null); 
+    const [error, setError] = useState<boolean>(false);
   
     const _handleError = () => { setError(true); }  
     const retry = () => { setError(false); }
