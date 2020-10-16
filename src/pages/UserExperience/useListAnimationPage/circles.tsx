@@ -2,7 +2,12 @@ import React, { forwardRef } from "react";
 
 const IMAGE_URL = "https://loremflickr.com/120/120/sun";
 
-const Circle = forwardRef(({ text, id }, ref) => (
+type circleProps = {
+  id: string;
+  text: string;
+}
+
+const Circle = forwardRef(({ text, id }: circleProps, ref: any) => (
   <div ref={ref}>
     <div className="circle">
       <span

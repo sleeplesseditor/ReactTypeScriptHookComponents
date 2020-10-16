@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import reactLogo from '../../../logo.svg';
 import konamiLogo from '../../../components/Hooks/UserExperience/useSecretCode/konami-logo-full.svg';
 import KonamiCode from './konami_code.png';
-import KonamiSound from './konami_logo.mp3';
 import { useKonamiCode } from '../../../components/Hooks/UserExperience/useSecretCode/useKonamiCode'
 import '../../page-structure.scss';
 import './useSecretCodePage.scss';
 
+const KonamiSound = require('./konami_logo.mp3');
+
 const useSecretCodePage = () => {
-    const [logoValue, setLogoValue] = useState(false);
+    const [logoValue, setLogoValue] = useState<boolean>(false);
 
     const konamiCode = useKonamiCode();
-    // const logo = konamiCode ? konamiLogo : reactLogo;
 
     const playAudio = () => {
         const audioEl = document.getElementsByClassName("audio-element")[0]
@@ -24,8 +24,6 @@ const useSecretCodePage = () => {
             playAudio();
         }
     }, [konamiCode])
-
-    console.log('KC', konamiCode)
 
     return (
         <div className="page-container">

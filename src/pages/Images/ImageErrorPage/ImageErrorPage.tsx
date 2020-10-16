@@ -8,7 +8,7 @@ const ImageErrorPage = () => {
 
     const Image = 'https://images.unsplash.com/photo-1498462440456-0dba182e775b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'
 
-    if (hasError) return <div>Error !!!</div>
+    if (hasError as boolean) return <div>Error!!!</div>
 
     return (
         <div className="page-container">

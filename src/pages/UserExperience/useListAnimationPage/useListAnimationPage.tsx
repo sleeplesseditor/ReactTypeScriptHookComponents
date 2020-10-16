@@ -13,11 +13,16 @@ const initialImages = [
     { id: "5", text: "Image 5" }
 ];
 
+type imageArray = {
+    id: string;
+    text: string;
+}
+
 const UseListAnimationPage = () => {
-    const [images, setImages] = useState(initialImages);
+    const [images, setImages] = useState<imageArray[]>(initialImages);
 
     const reorder = () => {
-        const shuffledImages = shuffleArray(images);
+        const shuffledImages = shuffleArray(images as any);
         setImages(shuffledImages);
     };
 

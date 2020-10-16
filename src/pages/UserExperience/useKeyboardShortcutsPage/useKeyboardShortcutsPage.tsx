@@ -4,7 +4,7 @@ import '../../page-structure.scss';
 import './useKeyboardShortcutsPage.scss';
 
 const UseKeyboardShortcutsPage = () => {
-    const shortcut = useSingleKeyShortcut('/');
+    const shortcut = useSingleKeyShortcut('/' as string);
     return (
         <div className="page-container">
             <h2 className="page-continer-heading">useSingleKeyShortcut Hook</h2>

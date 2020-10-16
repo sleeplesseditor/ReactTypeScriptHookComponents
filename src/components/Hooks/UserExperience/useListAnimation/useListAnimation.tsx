@@ -2,12 +2,7 @@ import React, { useState, useLayoutEffect, useEffect } from "react";
 import usePrevious from "../../usePrevious";
 import calculateBoundingBoxes from "../../Helpers/boundingBox";
 
-type animationProps = {
-  children: Element;
-  vertical: any;
-}
-
-const useListAnimation = ({ children, vertical }: animationProps) => {
+const useListAnimation = (children: any, vertical: any): JSX.Element => {
     const [boundingBox, setBoundingBox] = useState<any>({});
     const [prevBoundingBox, setPrevBoundingBox] = useState<any>({});
     const prevChildren = usePrevious(children);
